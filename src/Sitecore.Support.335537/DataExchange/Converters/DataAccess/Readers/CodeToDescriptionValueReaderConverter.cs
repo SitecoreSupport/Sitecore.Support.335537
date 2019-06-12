@@ -2,7 +2,6 @@
 using Sitecore.DataExchange.Attributes;
 using Sitecore.DataExchange.Converters;
 using Sitecore.DataExchange.DataAccess;
-using Sitecore.DataExchange.DataAccess.Readers;
 using Sitecore.DataExchange.Repositories;
 using Sitecore.Services.Core.Model;
 
@@ -24,7 +23,7 @@ namespace Sitecore.Support.DataExchange.Converters.DataAccess.Readers
                 return NegativeResult(source, "The field does not reference a valid item.", $"field: {FieldNameCodeDefinitionSet}");
             }
             var codeItems = this.GetChildItemModels(codeSetItem);
-            var reader = new CodeToDescriptionValueReader();
+            var reader = new Sitecore.Support.DataExchange.DataAccess.Readers.CodeToDescriptionValueReader();
             foreach (var codeItem in codeItems)
             {
                 var value = this.GetIntValue(codeItem, FieldNameCodeDefinitionValue);

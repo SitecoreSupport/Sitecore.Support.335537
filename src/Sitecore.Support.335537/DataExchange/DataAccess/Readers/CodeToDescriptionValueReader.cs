@@ -16,9 +16,9 @@ namespace Sitecore.Support.DataExchange.DataAccess.Readers
         public IDictionary<int, string> Values { get; private set; }
         public virtual ReadResult Read(object source, DataAccessContext context)
         {
-            if (source is int)
+            if (source as Microsoft.Xrm.Sdk.OptionSetValue != null)
             {
-                var key = (int)source;
+                var key = ((Microsoft.Xrm.Sdk.OptionSetValue)source).Value;
                 if (!this.Values.ContainsKey(key))
                 {
                     return ReadResult.PositiveResult(null, DateTime.Now);
